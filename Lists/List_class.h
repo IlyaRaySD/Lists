@@ -24,8 +24,6 @@ public:
 
 	int len() { return length; }
 
-	Node* head() { return head; }
-
 	void append(Type value) {
 		if (head == nullptr) {
 			head = new Node(value);
@@ -86,7 +84,7 @@ public:
 		return current->value;
 	}
 
-	void merger(Node* node) {}
+	//void merger(Node* node) {}
 
 	~List() {
 		clear();

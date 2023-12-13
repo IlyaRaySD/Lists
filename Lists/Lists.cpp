@@ -18,5 +18,16 @@ int main() {
 		cout << list_2[i - 2] << ' ';
 	}
 
+	for (int i = 0; i < n; i++)
+		list_1.append(list_2[i]);
+
+	cout << endl;
+
+	for (int i = 0; i < n + n; i++) {
+		cout << list_1[i] << ' ';
+	}
+
+
+
 	cout << endl;
 }
