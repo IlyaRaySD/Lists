@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 #pragma once
 
 template <typename Type>
@@ -84,7 +86,43 @@ public:
 		return current->value;
 	}
 
-	//void merger(Node* node) {}
+	void print_list() {
+		Node* current = head;
+		while(current->next != nullptr) {
+			cout << current->value << ' ';
+			current = current->next;
+		}
+		cout << current->value << ' ';
+	}
+
+	void swap(int index_1, int index_2) {
+		Node* first = head;
+		Node* second = head;
+		for (int i = 0; i < index_1; i++)
+			first = first->next;
+		for (int i = 0; i < index_2; i++)
+			second = second->next;
+		Type temp = first->value;
+		first->value = second->value;
+		second->value = temp;
+	}
+
+	/*void sort() {
+		Node* last = head;
+		Node* current;
+		int sorted = 0;
+		while (last != nullptr) {
+			current = head;
+			last = last->next;
+			sorted++;
+			for (int i = 0; i < sorted; i++) {
+				current = current->next;
+				if (current->value > last->value)
+					swap(sorted, i);
+			}
+		}
+
+	}*/
 
 	~List() {
 		clear();
