@@ -1,6 +1,8 @@
+#pragma once
+
 #include <iostream>
 using namespace std;
-#pragma once
+
 
 template <typename Type>
 class List {
@@ -107,21 +109,31 @@ public:
 		second->value = temp;
 	}
 
-	/*void sort() {
-		Node* last = head;
-		Node* current;
-		int sorted = 0;
-		while (last != nullptr) {
-			current = head;
-			last = last->next;
-			sorted++;
-			for (int i = 0; i < sorted; i++) {
+	/*List<int> merge(List<int> list) {
+		List<int> res = new List();
+		Node* current = head;
+		int i = 0;
+		while (current != nullptr or i < list.len()) {
+			if (list[i] >= current->value) {
+				res.append(list[i]);
+				i++;
+			}
+			else {
+				res.append(current->value);
 				current = current->next;
-				if (current->value > last->value)
-					swap(sorted, i);
 			}
 		}
-
+		if (current != nullptr) {
+			while (current != nullptr) {
+				res.append(current->value);
+				current = current->next;
+			}
+		}
+		if (i < list.len()) {
+			res.append(list[i]);
+			i++;
+		}
+		return res;
 	}*/
 
 	~List() {
