@@ -1,33 +1,38 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
 using namespace std;
 
-
+// list class
 template <typename Type>
 class List {
 private:
+	// list node class
 	class Node {
 	public:
-		Type value;
-		Node* next;
+		Type value; // node element value
+		Node* next; // pointer to next node
 
-		Node(int value) {
+		// constructor
+		Node(Type value) {
 			this->value = value;
 			next = nullptr;
 		}
 	};
 
-	Node* head;
-	int length;
+	Node* head; // start node
+	int length; // length of list
 public:
+	// constructor
 	List() {
 		head = nullptr;
 		length = 0;
 	}
 
+	// returns the length of the list
 	int len() { return length; }
 
+	// adding an element to the end of the list
 	void append(Type value) {
 		if (head == nullptr) {
 			head = new Node(value);
@@ -43,6 +48,7 @@ public:
 
 	}
 
+	// adding an element anywhere in the list
 	void insert(Type value, int index) {
 		if (index == 0) {
 			Node* temp = head;
@@ -61,6 +67,7 @@ public:
 		}
 	}
 
+	// removing an element from a list
 	void del(int index) {
 		Node* current = head;
 		for (int i = 0; i < index; i++)
@@ -71,6 +78,7 @@ public:
 		length--;
 	}
 
+	// clearing the list
 	void clear() {
 		for (int i = 0; i < length; i++) {
 			Node* temp = head;
@@ -81,6 +89,7 @@ public:
 		length = 0;
 	}
 
+	// operator redefinition []
 	Type operator[](int index) {
 		Node* current = head;
 		for (int i = 0; i < index; i++)
@@ -88,6 +97,7 @@ public:
 		return current->value;
 	}
 
+	// output list to console
 	void print_list() {
 		Node* current = head;
 		while(current->next != nullptr) {
@@ -97,6 +107,7 @@ public:
 		cout << current->value << ' ';
 	}
 
+	// swaps 2 values ​​in a list
 	void swap(int index_1, int index_2) {
 		Node* first = head;
 		Node* second = head;
@@ -108,34 +119,7 @@ public:
 		first->value = second->value;
 		second->value = temp;
 	}
-
-	/*List<int> merge(List<int> list) {
-		List<int> res = new List();
-		Node* current = head;
-		int i = 0;
-		while (current != nullptr or i < list.len()) {
-			if (list[i] >= current->value) {
-				res.append(list[i]);
-				i++;
-			}
-			else {
-				res.append(current->value);
-				current = current->next;
-			}
-		}
-		if (current != nullptr) {
-			while (current != nullptr) {
-				res.append(current->value);
-				current = current->next;
-			}
-		}
-		if (i < list.len()) {
-			res.append(list[i]);
-			i++;
-		}
-		return res;
-	}*/
-
+	// distructor
 	~List() {
 		clear();
 	}
